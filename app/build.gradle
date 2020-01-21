@@ -24,6 +24,7 @@ dependencies {
 
     implementation(name:'zxing-android-embedded-debug', ext:'aar')
     implementation 'com.google.zxing:core:3.3.0'
+    implementation project(":barcodescanner")
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
