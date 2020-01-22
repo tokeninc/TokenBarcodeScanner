@@ -30,11 +30,17 @@ import java.util.List;
 public class CaptureDialog extends DialogFragment {
     private DecoratedBarcodeView barcodeView;
     private String myResult;
-    private TokenBarcodeCallback barcodeCallback;
+    private SingleBarcodeCallback barcodeCallback;
     private Context context;
 
-    CaptureDialog(TokenBarcodeCallback barcodeCallback){
-        super();
+    static CaptureDialog newInstance(Bundle args) {
+
+        CaptureDialog fragment = new CaptureDialog();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    void setBarcodeCallback(SingleBarcodeCallback barcodeCallback) {
         this.barcodeCallback = barcodeCallback;
     }
 

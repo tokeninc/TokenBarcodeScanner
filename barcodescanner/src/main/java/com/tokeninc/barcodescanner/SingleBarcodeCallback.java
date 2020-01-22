@@ -1,6 +1,6 @@
 package com.tokeninc.barcodescanner;
 
 
-public interface TokenBarcodeCallback {
+public interface SingleBarcodeCallback {
     void getBarcodeData(String barcodeData);
 }

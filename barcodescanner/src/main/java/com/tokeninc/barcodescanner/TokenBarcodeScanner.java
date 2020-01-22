@@ -9,7 +9,7 @@ public class TokenBarcodeScanner {
 
     private static TokenBarcodeScanner instance;
 
-    protected TokenBarcodeScanner(){
+    private TokenBarcodeScanner(){
 
     }
 
@@ -25,16 +25,20 @@ public class TokenBarcodeScanner {
      * @param params parameters to pass instance for usage in barcode scanner
      * @param callback interface to get results in barcode scanner
      */
-    protected void requestBarcodeScannerWithParams(@NonNull Bundle params,@NonNull FragmentManager fragmentManager,
-                                                          @NonNull TokenBarcodeCallback callback){
-        new CaptureDialog(callback).show(fragmentManager, CaptureDialog.class.getName());
+    private void requestBarcodeScannerWithParams(@NonNull Bundle params,@NonNull FragmentManager fragmentManager,
+                                                          @NonNull SingleBarcodeCallback callback){
+        CaptureDialog dialog = CaptureDialog.newInstance(params);
+        dialog.setBarcodeCallback(callback);
+        dialog.show(fragmentManager, CaptureDialog.class.getName());
     }
 
     /**
-     * @param fragmentManager supportFragmentmanager
+     * @param fragmentManager supportFragmentManager
      * @param callback interface to get results in barcode scanner
      */
-    public void requestBarcodeScanner(@NonNull FragmentManager fragmentManager, @NonNull TokenBarcodeCallback callback){
-        new CaptureDialog(callback).show(fragmentManager, CaptureDialog.class.getName());
+    public void requestBarcodeScanner(@NonNull FragmentManager fragmentManager, @NonNull SingleBarcodeCallback callback){
+        CaptureDialog dialog = new CaptureDialog();
+        dialog.setBarcodeCallback(callback);
+        dialog.show(fragmentManager, CaptureDialog.class.getName());
     }
 }
