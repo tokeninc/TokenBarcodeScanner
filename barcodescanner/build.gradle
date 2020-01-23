@@ -29,6 +29,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation(name:'zxing-android-embedded-debug', ext:'aar')
-    implementation 'com.google.zxing:core:3.3.0'
+    implementation 'com.journeyapps:zxing-android-embedded:4.0.2'
+    implementation 'com.google.zxing:core:3.4.0'
 }

@@ -63,19 +63,22 @@ public class CaptureDialog extends DialogFragment {
 
             myResult = result.getText();
             barcodeView.setStatusText(myResult);
-
-            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
-            dialogBuilder.setMessage("Barcode Info: \n" + myResult);
-            dialogBuilder.setCancelable(false);
-            dialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
+            //Hide or show confirm dialog to return
+            if(getArguments() != null && getArguments().getBoolean("noConfirmDialog")){
+                barcodeCallback.getBarcodeData(myResult);
+                CaptureDialog.this.dismiss();
+            }
+            else{
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+                dialogBuilder.setMessage("Barcode Info: \n" + myResult);
+                dialogBuilder.setCancelable(false);
+                dialogBuilder.setPositiveButton("OK", (dialog,which) -> {
                     barcodeCallback.getBarcodeData(myResult);
                     dialog.dismiss();
                     CaptureDialog.this.dismiss();
-                }
-            });
-            dialogBuilder.show();
+                });
+                dialogBuilder.show();
+            }
         }
 
 

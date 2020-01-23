@@ -41,4 +41,13 @@ public class TokenBarcodeScanner {
         dialog.setBarcodeCallback(callback);
         dialog.show(fragmentManager, CaptureDialog.class.getName());
     }
+
+    public void requestBarcodeScannerWithoutConfirmDialog(@NonNull FragmentManager fragmentManager,
+                                                          @NonNull SingleBarcodeCallback callback){
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("noConfirmDialog",true);
+        CaptureDialog dialog = CaptureDialog.newInstance(bundle);
+        dialog.setBarcodeCallback(callback);
+        dialog.show(fragmentManager, CaptureDialog.class.getName());
+    }
 }
