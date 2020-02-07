@@ -1,1 +1,7 @@
-<manifest package="com.tokeninc.barcodescanner" />
+<manifest package="com.tokeninc.barcodescanner"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.CAMERA" />
+    <application
+        android:hardwareAccelerated="true">
+    </application>
+</manifest>
