@@ -3,19 +3,25 @@ package com.tokeninc.barcodescanner;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
+
+import com.tokeninc.barcodescannerimpl.TokenBarcodeScanner;
+
+import java.lang.ref.WeakReference;
 
 /**
  * Sample App Project
  */
 
 public class MainActivity extends AppCompatActivity {
+    private TokenBarcodeScanner scanner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViewById(R.id.start_scanning).setOnClickListener(v ->
-                TokenBarcodeScanner.getInstance().requestBarcodeScanner(getSupportFragmentManager(), result ->
-                        Log.d("barcode",result)));
+            scanner = new TokenBarcodeScanner(new WeakReference<>(MainActivity.this),data -> {
+
+            }));
     }
 }
